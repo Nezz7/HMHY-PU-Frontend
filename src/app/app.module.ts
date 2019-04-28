@@ -10,6 +10,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { AllMessagesComponent } from './all-messages/all-messages.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
 import { FormRequestComponent } from './form-request/form-request.component';
+import { routing } from './app.routing';
+import { HelpyouComponent } from './helpyou/helpyou.component';
+import { HelpmeComponent } from './helpme/helpme.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +24,15 @@ import { FormRequestComponent } from './form-request/form-request.component';
     ProfileComponent,
     AllMessagesComponent,
     ProfileSettingComponent,
-    FormRequestComponent
+    FormRequestComponent,
+    HelpyouComponent,
+    HelpmeComponent,
+    NotificationsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

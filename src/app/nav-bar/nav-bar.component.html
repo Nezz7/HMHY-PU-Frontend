@@ -15,17 +15,17 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="projects.html" title="">
+                        <a [routerLink]="['/helpme']" title="">
                             <span><img src="../../assets/images/icon3.png" alt=""></span> Help me
                         </a>
                     </li>
                     <li>
-                        <a href="jobs.html" title="">
+                        <a [routerLink]="['/helpyou']" title="">
                             <span><img src="../../assets/images/icon5.png" alt=""></span> Help you
                         </a>
                     </li>
                     <li>
-                        <a href="#" title="" class="not-box-open">
+                        <a title="" class="not-box-open">
                             <span><img src="../../assets/images/icon6.png" alt=""></span> Messages
                         </a>
                         <div class="notification-box msg">
@@ -68,7 +68,7 @@
                                     <!--notification-info -->
                                 </div>
                                 <div class="view-all-nots">
-                                    <a href="messages.html" title="">View All Messsages</a>
+                                    <a [routerLink]="['/messages']" title="">View All Messsages</a>
                                 </div>
                             </div>
                             <!--nott-list end-->
@@ -76,7 +76,7 @@
                         <!--notification-box end-->
                     </li>
                     <li>
-                        <a href="#" title="" class="not-box-open">
+                        <a title="" class="not-box-open">
                             <span><img src="../../assets/images/icon7.png" alt=""></span> Notification
                         </a>
                         <div class="notification-box">
@@ -126,7 +126,7 @@
                                     <!--notification-info -->
                                 </div>
                                 <div class="view-all-nots">
-                                    <a href="#" title="">View All Notification</a>
+                                    <a [routerLink]="['/notifications']" title="">View All Notification</a>
                                 </div>
                             </div>
                             <!--nott-list end-->
@@ -148,7 +148,7 @@
             <div class="user-account">
                 <div class="user-info">
                     <img src="../../assets/images/resources/user.png" alt="">
-                    <a href="#" title="">John</a>
+                    <a [routerLink]="['/profile']" title="">John</a>
                     <i class="la la-sort-down"></i>
                 </div>
                 <div class="user-account-settingss">
