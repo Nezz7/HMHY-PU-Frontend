@@ -20,6 +20,9 @@ import { SingupComponent } from './singup/singup.component';
 import { AuthService } from './auth.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { HttpModule } from '@angular/http';
     AppRoutingModule,
     routing,
     FormsModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
