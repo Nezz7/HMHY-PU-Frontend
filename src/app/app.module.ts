@@ -14,6 +14,12 @@ import { routing } from './app.routing';
 import { HelpyouComponent } from './helpyou/helpyou.component';
 import { HelpmeComponent } from './helpme/helpme.component';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { TokensComponent } from './tokens/tokens.component';
+import { SinginComponent } from './singin/singin.component';
+import { SingupComponent } from './singup/singup.component';
+import { AuthService } from './auth.service';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -27,14 +33,19 @@ import { NotificationsComponent } from './notifications/notifications.component'
     FormRequestComponent,
     HelpyouComponent,
     HelpmeComponent,
-    NotificationsComponent
+    NotificationsComponent,
+    TokensComponent,
+    SinginComponent,
+    SingupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    routing
+    routing,
+    FormsModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
