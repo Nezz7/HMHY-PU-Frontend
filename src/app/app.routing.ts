@@ -8,12 +8,14 @@ import { ProfileSettingComponent } from "./profile-setting/profile-setting.compo
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { SinginComponent } from "./singin/singin.component";
 import { SingupComponent } from "./singup/singup.component";
+import { HomepageComponent } from "./homepage/homepage.component";
 
 
 
 const APP_ROUTES: Routes = [
     { path:'', redirectTo: '/home',pathMatch:'full'},
     { path:'home', component : TemplateComponent},
+    { path:'homepage', component : HomepageComponent},
     { path:'profile',component:ProfileComponent},
     { path:'messages',component:AllMessagesComponent},
     { path:'helpme',component:HelpmeComponent},
