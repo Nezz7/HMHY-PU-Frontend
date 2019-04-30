@@ -13,8 +13,7 @@ import { HomepageComponent } from "./homepage/homepage.component";
 
 
 const APP_ROUTES: Routes = [
-    { path:'', redirectTo: '/home',pathMatch:'full'},
-    { path:'home', component : TemplateComponent},
+    { path:'', redirectTo: '/homepage',pathMatch:'full'},
     { path:'homepage', component : HomepageComponent},
     { path:'profile',component:ProfileComponent},
     { path:'messages',component:AllMessagesComponent},

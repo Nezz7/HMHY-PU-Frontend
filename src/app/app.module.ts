@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
+import { UserService } from './user.service';
 
 
 
@@ -51,7 +52,7 @@ import { HomepageComponent } from './homepage/homepage.component';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

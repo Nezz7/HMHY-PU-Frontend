@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user.model';
+import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -6,10 +10,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
-  constructor() { }
+  user = new User();
+  img : string;
+  constructor(private userservice :UserService,private authService : AuthService) {
+    const token = this.authService.getToken();
+    this.img='http://localhost:8000/api/user/getavatar?token='+token;
+   }
 
   ngOnInit() {
+     this.onGetProfile();
   }
-
+  onGetProfile (){
+    this.userservice.getProfile()
+    .subscribe(
+        data  =>this.user=data,
+        error=>console.log(error)
+    );
+  }
 }

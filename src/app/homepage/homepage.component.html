@@ -1,12 +1,19 @@
-<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i" rel="stylesheet">
 <div id="lp-register">
+
     <div class="container wrapper">
-        <div class="row">
+        <div class="row ">
             <div class="col-sm-5">
                 <div class="intro-texts">
-                    <h1 class="text-white">Make Cool Friends !!!</h1>
-                    <p>Friend Finder is a social network template that can be used to connect people. The template offers Landing pages, News Feed, Image/Video Feed, Chat Box, Timeline and lot more. <br /> <br />Why are you waiting for? Buy it now.</p>
-                    <button class="btn btn-primary">Learn More</button>
+                    <img class="logo" src="../../assets/images/helpmehelpyou-02.png" height="30%" width="40%">
+                    <br><br><br>
+                    <h1 class="text-white">Help &nbsp;&nbsp;&nbsp;&nbsp; us &nbsp;&nbsp;&nbsp;&nbsp; all &nbsp;&nbsp;!!!</h1>
+                    <p class="text-white fz">
+                        Help me Help you is a platform that allows student to share expertise with ease.
+                        <br> In order to obtain tokens, a user must provide services to others.
+                        <br> A service can be any task that can be done in 2 hours or less but requires a specific skill set that not all people possess.
+
+                    </p>
+                    <!--<button class="btn btn-primary">Learn More</button>-->
                 </div>
             </div>
             <div class="col-sm-6 col-sm-offset-1">
@@ -22,47 +29,38 @@
                     </div>
 
                     <!--Registration Form Contents-->
+
                     <div class="tab-content">
                         <div class="tab-pane active" id="register">
                             <h3>Register Now !!!</h3>
-                            <p class="text-muted">Be cool and join today. Meet millions</p>
+                            <p class="text-muted">Be cool and join today. Help millions</p>
 
                             <!--Register Form-->
-                            <form name="registration_form" id='registration_form' class="form-inline">
+                            <form (ngSubmit)="onSignup(f)" #f="ngForm" class="form-inline">
                                 <div class="row">
-                                    <div class="form-group col-xs-6">
-                                        <label for="firstname" class="sr-only">First Name</label>
-                                        <input id="firstname" class="form-control input-group-lg" type="text" name="firstname" title="Enter first name" placeholder="First name" />
-                                    </div>
-                                    <div class="form-group col-xs-6">
-                                        <label for="lastname" class="sr-only">Last Name</label>
-                                        <input id="lastname" class="form-control input-group-lg" type="text" name="lastname" title="Enter last name" placeholder="Last name" />
+                                    <div class="form-group col-s-24">
+                                        <label for="username" class="sr-only">Username</label>
+                                        <input id="username" ngModel class="form-control input-group-lg" type="text" name="username" placeholder="First name" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-xs-12">
+                                    <div class="form-group col-s-24">
                                         <label for="email" class="sr-only">Email</label>
-                                        <input id="email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" />
+                                        <input id="email" ngModel class="form-control input-group-lg" type="text" name="email" placeholder="Your Email" />
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-xs-12">
+                                    <div class="form-group col-s-24">
                                         <label for="password" class="sr-only">Password</label>
-                                        <input id="password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" />
+                                        <input id="password" ngModel class="form-control input-group-lg" type="password" name="password" placeholder="Password" />
                                     </div>
                                 </div>
-
                                 <div class="row">
-                                    <div class="form-group col-xs-6">
-                                        <label for="city" class="sr-only">City</label>
-                                        <input id="city" class="form-control input-group-lg reg_name" type="text" name="city" title="Enter city" placeholder="Your city" />
-                                    </div>
-
+                                    <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Register Now</button>
                                 </div>
                             </form>
                             <!--Register Now Form Ends-->
-                            <p><a href="#">Already have an account?</a></p>
-                            <button class="btn btn-primary">Register Now</button>
+
                         </div>
                         <!--Registration Form Contents Ends-->
 
@@ -72,23 +70,26 @@
                             <p class="text-muted">Log into your account</p>
 
                             <!--Login Form-->
-                            <form name="Login_form" id='Login_form'>
-                                <div class="row">
+                            <form (ngSubmit)="onSignin(fc)" #fc="ngForm" name="Login_form" id='Login_form'>
+                                <div>
                                     <div class="form-group col-xs-12">
-                                        <label for="my-email" class="sr-only">Email</label>
-                                        <input id="my-email" class="form-control input-group-lg" type="text" name="Email" title="Enter Email" placeholder="Your Email" />
+                                        <label for="myemail" class="sr-only">Email</label>
+                                        <input id="myemail" ngModel class="form-control input-group-lg" type="text" name="myemail" placeholder="Your Email" />
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div>
                                     <div class="form-group col-xs-12">
-                                        <label for="my-password" class="sr-only">Password</label>
-                                        <input id="my-password" class="form-control input-group-lg" type="password" name="password" title="Enter password" placeholder="Password" />
+                                        <label for="mypassword" class="sr-only">Password</label>
+                                        <input id="mypassword" ngModel class="form-control input-group-lg" type="password" name="mypassword" placeholder="Password" />
                                     </div>
+                                </div>
+                                <div>
+                                    <!--Login Form Ends-->
+                                    <p><a href="#">Forgot Password?</a></p>
+                                    <button class="btn btn-primary" type="submit" [disabled]="!fc.valid">Login Now</button>
                                 </div>
                             </form>
-                            <!--Login Form Ends-->
-                            <p><a href="#">Forgot Password?</a></p>
-                            <button class="btn btn-primary">Login Now</button>
+
                         </div>
                     </div>
                 </div>
