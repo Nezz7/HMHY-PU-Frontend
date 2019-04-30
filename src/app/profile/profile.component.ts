@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
   occupation : boolean;
   constructor(private userservice :UserService,private authService : AuthService,private http: HttpClient,private router : Router) { 
      this.token = this.authService.getToken();
+     console.log (this.token);
     this.img='http://localhost:8000/api/user/getavatar?token='+this.token;
   }
   ngOnInit() {
@@ -39,15 +40,31 @@ export class ProfileComponent implements OnInit {
    );
  }
  onFiledSelected (event){
-   console.log(event);
    this.selectedFile = <File> event.target.files[0];
    const fd = new FormData();
    fd.append('photo',this.selectedFile);
-  this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd).subscribe(
-    res => console.log(res)
-  );
+  this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd);
  }
-
-
+ onUpdateDescription(description : string ){
+    this.userservice.updateDescription(description)
+    .subscribe(
+        res=>console.log(res),
+        error=>console.log(error)
+    );
+ }
+ onUpdateOccupation(occupation : string ){
+  this.userservice.updateOccupation(occupation)
+  .subscribe(
+      res=>console.log(res),
+      error=>console.log(error)
+  );
+}
+onUpdateInstitution(institution : string ){
+  this.userservice.updateInstitution(institution)
+  .subscribe(
+      res=>console.log(res),
+      error=>console.log(error)
+  );
+}
 
 }

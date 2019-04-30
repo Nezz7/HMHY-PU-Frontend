@@ -10,14 +10,6 @@ export class UserService {
   constructor(private http: Http, private authService: AuthService) {
 
   }
-  /*
-  addQuote(content: string) {
-    const token = this.authService.getToken();
-    const body = JSON.stringify({content: content});
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.post('http://laravel-ng2-vue.dev/api/quote?token=' + token, body, {headers: headers})
-  }
-*/
   getProfile() {
     const token = this.authService.getToken();
     return this.http.get('http://localhost:8000/api/user/profile?token='+token)
@@ -37,20 +29,36 @@ export class UserService {
       );
 
   }
-  
-  /*
-  updateQuote(id: number, newContent: string) {
+  updateDescription(description : string){
     const token = this.authService.getToken();
-    const body = JSON.stringify({content: newContent});
-    const headers = new Headers({'Content-Type': 'application/json'});
-    return this.http.put('http://laravel-ng2-vue.dev/api/quote/' + id + '?token=' + token, body, {headers: headers})
-      .map(
-        (response: Response) => response.json()
-      );
+    return   this.http.post('http://127.0.0.1:8000/api/usr/updatedescription?token'+token,
+    {
+        description : description,
+        
+    },
+    {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
+    );
   }
-
-  deleteQuote(id: number) {
+  updateOccupation(occupation : string){
     const token = this.authService.getToken();
-    return this.http.delete('http://laravel-ng2-vue.dev/api/quote/' + id + '?token=' + token);
-  }*/
+    return   this.http.post('http://127.0.0.1:8000/api/usr/updatedoccupation?token'+token,
+    {
+        occupation : occupation,
+        
+    },
+    {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
+    );
+  }
+  updateInstitution(institution : string){
+    const token = this.authService.getToken();
+    return   this.http.post('http://127.0.0.1:8000/api/usr/updateinstitution?token'+token,
+    {
+        institution : institution,
+        
+    },
+    {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
+    );
+  }
+  
+
 }
