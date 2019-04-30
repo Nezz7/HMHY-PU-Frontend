@@ -7,4 +7,6 @@ export class User {
  description : string;
  avatar : string;
  skills : string[];
+ institution : string;
+ occupation : string;
 }

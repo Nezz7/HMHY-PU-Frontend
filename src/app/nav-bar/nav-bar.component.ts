@@ -12,6 +12,7 @@ import { AuthService } from '../auth.service';
 export class NavBarComponent implements OnInit {
   user = new User();
   img : string;
+  name:string;
   constructor(private userservice :UserService,private authService : AuthService) {
     const token = this.authService.getToken();
     this.img='http://localhost:8000/api/user/getavatar?token='+token;
@@ -23,8 +24,12 @@ export class NavBarComponent implements OnInit {
   onGetProfile (){
     this.userservice.getProfile()
     .subscribe(
-        data  =>this.user=data,
+        data  =>{this.user=data,
+          this.name = (this.user).name.split(' ')[0]
+         }
+        ,
         error=>console.log(error)
     );
+
   }
 }
