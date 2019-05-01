@@ -3,7 +3,7 @@ import { UserService } from '../user.service';
 import { User } from '../models/user.model';
 import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, RouteConfigLoadEnd } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -24,6 +24,8 @@ export class ProfileComponent implements OnInit {
   skills : boolean;
   occupation: boolean=false;
   onOccupation : boolean=false;
+  addSkill : boolean =false;
+  deleteSkill : boolean =false;
   constructor(private userservice :UserService,private authService : AuthService,private http: HttpClient,private router : Router) { 
      this.token = this.authService.getToken();
     this.img='http://localhost:8000/api/user/getavatar?token='+this.token;
@@ -47,7 +49,9 @@ export class ProfileComponent implements OnInit {
    this.selectedFile = <File> event.target.files[0];
    const fd = new FormData();
    fd.append('photo',this.selectedFile);
-   this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd);
+   this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd).subscribe(
+     res=>console.log(res)
+   );
  }
  onUpdateDescription(){
     this.userservice.updateDescription(this.value)
@@ -78,11 +82,26 @@ onUpdateInstitution(form : NgForm){
   this.user.institution=form.value.institution;
   this.institution=(this.user.institution==null);
   this.onInstitution=false;
-
-
 }
 onClickOverview(){
     this.onOverview=true;
+}
+onAddSkill(form : NgForm){
+  this.userservice.addSkill(form.value.skill)
+  .subscribe(
+    user=> this.user=user,
+    error=>console.log(error)
+  );
+  this.addSkill=false;
+}
+onDeleteSkill(form : NgForm){
+  this.userservice.deleteSkill(form.value.skill)
+  .subscribe(
+      user=> this.user=user,
+    error=>console.log(error)
+   
+  );
+  this.deleteSkill=false;
 }
 
 }

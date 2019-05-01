@@ -27,8 +27,12 @@ export class HomepageComponent implements OnInit {
           localStorage.clear();
         }
     );
-    this.router.navigateByUrl('/profile');
-
+    this.authService.signin(form.value.email,form.value.password)
+    .subscribe (
+      response => {
+        console.log(response),
+        this.router.navigateByUrl('/profile');
+      });
   }
   onSignin(form : NgForm){
     this.authService.signin(form.value.myemail,form.value.mypassword)

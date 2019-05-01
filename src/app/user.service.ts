@@ -44,7 +44,11 @@ export class UserService {
         occupation : occupation,
         
     }
-    );
+    ).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );;
   }
   updateInstitution(institution : string){
     const token = this.authService.getToken();
@@ -55,8 +59,35 @@ export class UserService {
         
     },
     {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
-    );
+    ).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );;
   }
-  
+  addSkill (skill : string){
+    const token = this.authService.getToken();
+    return   this.http.post('http://127.0.0.1:8000/api/user/addskills?token='+token,
+    {
+        skills : [skill]
+        
+    }).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );;
+  }
+  deleteSkill (skill : string){
+    const token = this.authService.getToken();
+    return   this.http.post('http://127.0.0.1:8000/api/user/removeskill?token='+token,
+    {
+        skills : [skill]
+        
+    }).map(
+      (response: Response) => {
+        return response.json();
+      }
+    );;
+  }
 
 }
