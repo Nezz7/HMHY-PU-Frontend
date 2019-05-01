@@ -114,7 +114,7 @@
                                     </div>
                                     <div *ngIf="onInstitution">
                                         <form (ngSubmit)="onUpdateInstitution(f)" #f="ngForm" class="form-group ">
-                                            <input id="institution" class="form-control input-group-xlg " type="text " ngModel name="institution" placeholder="{{user.Institution}} ">
+                                            <input id="institution" class="form-control input-group-xlg " type="text " ngModel name="institution" placeholder="{{user.institution}} ">
                                             <div class="btn-group" role="group" aria-label="Basic example">
                                                 <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="onInstitution=false">Skip</button>
                                                 <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Update</button>

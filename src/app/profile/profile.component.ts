@@ -5,7 +5,6 @@ import { AuthService } from '../auth.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { userInfo } from 'os';
 
 @Component({
   selector: 'app-profile',
@@ -33,7 +32,6 @@ export class ProfileComponent implements OnInit {
     this.onGetProfile();
  }
  onGetProfile (){
-   console.log ("getProfile ...");
    this.userservice.getProfile()
    .subscribe(
        data  =>{this.user=data,
@@ -44,13 +42,12 @@ export class ProfileComponent implements OnInit {
       },
        error=>console.log(error)
    );
-   console.log(this.occupation + " " + this.onOccupation+" "+ this.user.occupation);
  }
  onFiledSelected (event){
    this.selectedFile = <File> event.target.files[0];
    const fd = new FormData();
    fd.append('photo',this.selectedFile);
-  this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd);
+   this.http.post('http://localhost:8000/api/user/uploadavatar?token='+this.token,fd);
  }
  onUpdateDescription(){
     this.userservice.updateDescription(this.value)
