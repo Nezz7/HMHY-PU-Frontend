@@ -31,27 +31,25 @@ export class UserService {
   }
   updateDescription(description : string){
     const token = this.authService.getToken();
-    return   this.http.post('http://127.0.0.1:8000/api/usr/updatedescription?token'+token,
-    {
-        description : description,
-        
-    },
-    {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
-    );
+    const body = JSON.stringify({
+      "description": description,
+    });
+    const headers = new Headers({'Content-Type':'application/json'});
+    return   this.http.post('http://127.0.0.1:8000/api/user/updatedescription?token='+token,body,{headers :headers});
   }
   updateOccupation(occupation : string){
     const token = this.authService.getToken();
-    return   this.http.post('http://127.0.0.1:8000/api/usr/updatedoccupation?token'+token,
+    return   this.http.post('http://127.0.0.1:8000/api/user/updateoccupation?token='+token,
     {
         occupation : occupation,
         
-    },
-    {headers:new Headers({ 'X-Requested-With' : 'XMLHttpRequest'})}
+    }
     );
   }
   updateInstitution(institution : string){
     const token = this.authService.getToken();
-    return   this.http.post('http://127.0.0.1:8000/api/usr/updateinstitution?token'+token,
+   
+    return   this.http.post('http://127.0.0.1:8000/api/user/updateinstitution?token='+token,
     {
         institution : institution,
         

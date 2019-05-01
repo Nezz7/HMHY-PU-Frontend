@@ -1,7 +1,7 @@
 <app-nav-bar></app-nav-bar>
 <section class="cover-sec">
     <img src="../../assets/images/resources/cover-img.jpg" alt="">
-    <a title=""><i class="fa fa-camera"></i> Change Image</a>
+    <a><i class="fa fa-camera"></i> Change Image</a>
 </section>
 
 
@@ -27,8 +27,8 @@
                                 <!--user-pro-img end-->
                                 <div class="user_pro_status">
                                     <ul class="flw-hr">
-                                        <li><a title="" class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                        <li><a title="" class="hre">Hire</a></li>
+                                        <li><a class="flww"><i class="la la-plus"></i> Follow</a></li>
+                                        <li><a class="hre">Hire</a></li>
                                     </ul>
                                     <ul class="flw-status">
                                         <li>
@@ -43,9 +43,9 @@
                                 </div>
                                 <!--user_pro_status end-->
                                 <ul class="social_links">
-                                    <li><a title=""><i class="la la-globe"></i> www.example.com</a></li>
-                                    <li><a title=""><i class="fa fa-facebook-square"></i> Http://www.facebook.com/{{user.name}}</a></li>
-                                    <li><a title=""><i class="fa fa-twitter"></i> Http://www.Twitter.com/{{user.name}}</a></li>
+                                    <li><a><i class="la la-globe"></i> www.example.com</a></li>
+                                    <li><a><i class="fa fa-facebook-square"></i> Http://www.facebook.com/{{user.name}}</a></li>
+                                    <li><a><i class="fa fa-twitter"></i> Http://www.Twitter.com/{{user.name}}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -72,115 +72,148 @@
                             <!--product-feed-tab end-->
                             <div class="product-feed-tab current" id="info-dd">
                                 <div class="user-profile-ov">
-                                    <h3><a title="" class="overview-open">Overview</a> <a title="" class="overview-open"><i class="fa fa-pencil"></i></a></h3>
-                                    <p *ngIf="description; elseOverview">Update your Overview</p>
-                                    <ng-template #elseOverview>{{user.descreption}}</ng-template>
+                                    <h3><a class="overview-open">Overview</a>
+                                        <a class="overview-open"><i (click)="onClickOverview()" class="fa fa-pencil"></i></a>
+                                    </h3>
+                                    <div *ngIf="!onOverview">
+                                        <p *ngIf="description">Update your Overview</p>
+                                        <p *ngIf="!description">{{user.description}}</p>
+                                    </div>
+                                    <div *ngIf="onOverview">
+                                        <form (ngSubmit)="onUpdateDescription()" #f="ngForm" class="form-group">
+                                            <textarea id="description" class="form-control input-group-xlg " row="3" [(ngModel)]="value" name="description">{{user.description}} </textarea>
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="onOverview=false">Skip</button>
+                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div class="user-profile-ov">
-                                    <h3><a title="" class="exp-bx-open">Occupation </a><a title="" class="exp-bx-open"><i class="fa fa-pencil"></i></a> </h3>
-
-                                    <p *ngIf="occupation; else elseOccupation">Update your Occupation</p>
-                                    <ng-template #elseOccupation>{{user.occupation}}</ng-template>
-
+                                <div class="user-profile-ov ">
+                                    <h3><a class="exp-bx-open ">Occupation </a><a class="exp-bx-open "><i (click)="onOccupation=true" class="fa fa-pencil "></i></a> </h3>
+                                    <div *ngIf="!onOccupation">
+                                        <p *ngIf="occupation">Update your Occupation</p>
+                                        <p *ngIf="!occupation">{{user.occupation}}</p>
+                                    </div>
+                                    <div *ngIf="onOccupation">
+                                        <form (ngSubmit)="onUpdateOccupation(f)" #f="ngForm" class="form-group ">
+                                            <input id="occupation" class="form-control input-group-xlg " type="text " ngModel name="occupation" placeholder="{{user.occupation}} ">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="onOccupation=false">Skip</button>
+                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
 
-                                <div class="user-profile-ov">
-                                    <h3><a title="" class="ed-box-open">Institution</a> <a title="" class="ed-box-open"><i class="fa fa-pencil"></i></a></h3>
-                                    <p *ngIf="institution; else elseInstitution">Update your Institution</p>
-                                    <ng-template #elseInstitution>{{user.institution}}</ng-template>
+                                <div class="user-profile-ov ">
+                                    <h3><a class="exp-bx-open ">Institution </a><a class="exp-bx-open "><i (click)="onInstitution=true" class="fa fa-pencil "></i></a> </h3>
+                                    <div *ngIf="!onInstitution">
+                                        <p *ngIf="institution">Update your Institution</p>
+                                        <p *ngIf="!institution">{{user.institution}}</p>
+                                    </div>
+                                    <div *ngIf="onInstitution">
+                                        <form (ngSubmit)="onUpdateInstitution(f)" #f="ngForm" class="form-group ">
+                                            <input id="institution" class="form-control input-group-xlg " type="text " ngModel name="institution" placeholder="{{user.Institution}} ">
+                                            <div class="btn-group" role="group" aria-label="Basic example">
+                                                <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="onInstitution=false">Skip</button>
+                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Update</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                                 <!--user-profile-ov end-->
-                                <div class="user-profile-ov">
-                                    <h3><a title="" class="skills-open">Skills</a> <a><i class="fa fa-plus-square"></i></a></h3>
-                                    <p *ngIf="skills; elseSkill">Add a skill </p>
+                                <div class="user-profile-ov ">
+                                    <h3><a class="skills-open ">Skills</a> <a><i class="fa fa-plus-square "></i></a></h3>
+                                    <p *ngIf="skills; elseSkill ">Add a skill </p>
                                     <ng-template #elseSkill>
                                         <ul>
-                                            <li><a title="">HTML</a></li>
-                                            <li><a title="">PHP</a></li>
-                                            <li><a title="">CSS</a></li>
-                                            <li><a title="">Javascript</a></li>
-                                            <li><a title="">Wordpress</a></li>
-                                            <li><a title="">Photoshop</a></li>
-                                            <li><a title="">Illustrator</a></li>
-                                            <li><a title="">Corel Draw</a></li>
+                                            <li><a title=" ">HTML</a></li>
+                                            <li><a title=" ">PHP</a></li>
+                                            <li><a title=" ">CSS</a></li>
+                                            <li><a title=" ">Javascript</a></li>
+                                            <li><a title=" ">Wordpress</a></li>
+                                            <li><a title=" ">Photoshop</a></li>
+                                            <li><a title=" ">Illustrator</a></li>
+                                            <li><a title=" ">Corel Draw</a></li>
                                         </ul>
                                     </ng-template>
                                 </div>
                                 <!--user-profile-ov end-->
                             </div>
                             <!--product-feed-tab end-->
-                            <div class="product-feed-tab" id="portfolio-dd">
-                                <div class="portfolio-gallery-sec">
+                            <div class="product-feed-tab " id="portfolio-dd ">
+                                <div class="portfolio-gallery-sec ">
                                     <h3>Portfolio</h3>
-                                    <div class="gallery_pf">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img1.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                    <div class="gallery_pf ">
+                                        <div class="row ">
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img1.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img2.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img2.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img3.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img3.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img4.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img4.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img5.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img5.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img6.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img6.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img7.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img7.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img8.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img8.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img9.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img9.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
-                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6">
-                                                <div class="gallery_pt">
-                                                    <img src="../../assets/images/resources/pf-img10.jpg" alt="">
-                                                    <a title=""><img src="../../assets/images/all-out.png" alt=""></a>
+                                            <div class="col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="gallery_pt ">
+                                                    <img src="../../assets/images/resources/pf-img10.jpg " alt=" ">
+                                                    <a title=" "><img src="../../assets/images/all-out.png " alt=" "></a>
                                                 </div>
                                                 <!--gallery_pt end-->
                                             </div>
@@ -191,102 +224,102 @@
                                 <!--portfolio-gallery-sec end-->
                             </div>
                             <!--product-feed-tab end-->
-                            <div class="product-feed-tab" id="payment-dd">
-                                <div class="billing-method">
+                            <div class="product-feed-tab " id="payment-dd ">
+                                <div class="billing-method ">
                                     <ul>
                                         <li>
                                             <h3>Add Billing Method</h3>
-                                            <a title=""><i class="fa fa-plus-circle"></i></a>
+                                            <a title=" "><i class="fa fa-plus-circle "></i></a>
                                         </li>
                                         <li>
                                             <h3>See Activity</h3>
-                                            <a title="">View All</a>
+                                            <a title=" ">View All</a>
                                         </li>
                                         <li>
                                             <h3>Total Money</h3>
                                             <span>$0.00</span>
                                         </li>
                                     </ul>
-                                    <div class="lt-sec">
-                                        <img src="../../assets/images/lt-icon.png" alt="">
+                                    <div class="lt-sec ">
+                                        <img src="../../assets/images/lt-icon.png " alt=" ">
                                         <h4>All your transactions are saved here</h4>
-                                        <a title="">Click Here</a>
+                                        <a title=" ">Click Here</a>
                                     </div>
                                 </div>
                                 <!--billing-method end-->
-                                <div class="add-billing-method">
+                                <div class="add-billing-method ">
                                     <h3>Add Billing Method</h3>
-                                    <h4><img src="../../assets/images/dlr-icon.png" alt=""><span>With workwise payment protection , only pay for work delivered.</span></h4>
-                                    <div class="payment_methods">
+                                    <h4><img src="../../assets/images/dlr-icon.png " alt=" "><span>With workwise payment protection , only pay for work delivered.</span></h4>
+                                    <div class="payment_methods ">
                                         <h4>Credit or Debit Cards</h4>
                                         <form>
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <div class="cc-head">
+                                            <div class="row ">
+                                                <div class="col-lg-12 ">
+                                                    <div class="cc-head ">
                                                         <h5>Card Number</h5>
                                                         <ul>
-                                                            <li><img src="../../assets/images/cc-icon1.png" alt=""></li>
-                                                            <li><img src="../../assets/images/cc-icon2.png" alt=""></li>
-                                                            <li><img src="../../assets/images/cc-icon3.png" alt=""></li>
-                                                            <li><img src="../../assets/images/cc-icon4.png" alt=""></li>
+                                                            <li><img src="../../assets/images/cc-icon1.png " alt=" "></li>
+                                                            <li><img src="../../assets/images/cc-icon2.png " alt=" "></li>
+                                                            <li><img src="../../assets/images/cc-icon3.png " alt=" "></li>
+                                                            <li><img src="../../assets/images/cc-icon4.png " alt=" "></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="inpt-field pd-moree">
-                                                        <input type="text" name="cc-number" placeholder="">
-                                                        <i class="fa fa-credit-card"></i>
+                                                    <div class="inpt-field pd-moree ">
+                                                        <input type="text " name="cc-number " placeholder=" ">
+                                                        <i class="fa fa-credit-card "></i>
                                                     </div>
                                                     <!--inpt-field end-->
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="cc-head">
+                                                <div class="col-lg-6 ">
+                                                    <div class="cc-head ">
                                                         <h5>First Name</h5>
                                                     </div>
-                                                    <div class="inpt-field">
-                                                        <input type="text" name="f-name" placeholder="">
+                                                    <div class="inpt-field ">
+                                                        <input type="text " name="f-name " placeholder=" ">
                                                     </div>
                                                     <!--inpt-field end-->
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="cc-head">
+                                                <div class="col-lg-6 ">
+                                                    <div class="cc-head ">
                                                         <h5>Last Name</h5>
                                                     </div>
-                                                    <div class="inpt-field">
-                                                        <input type="text" name="l-name" placeholder="">
+                                                    <div class="inpt-field ">
+                                                        <input type="text " name="l-name " placeholder=" ">
                                                     </div>
                                                     <!--inpt-field end-->
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="cc-head">
+                                                <div class="col-lg-6 ">
+                                                    <div class="cc-head ">
                                                         <h5>Expiresons</h5>
                                                     </div>
-                                                    <div class="rowwy">
-                                                        <div class="row">
-                                                            <div class="col-lg-6 pd-left-none no-pd">
-                                                                <div class="inpt-field">
-                                                                    <input type="text" name="f-name" placeholder="">
+                                                    <div class="rowwy ">
+                                                        <div class="row ">
+                                                            <div class="col-lg-6 pd-left-none no-pd ">
+                                                                <div class="inpt-field ">
+                                                                    <input type="text " name="f-name " placeholder=" ">
                                                                 </div>
                                                                 <!--inpt-field end-->
                                                             </div>
-                                                            <div class="col-lg-6 pd-right-none no-pd">
-                                                                <div class="inpt-field">
-                                                                    <input type="text" name="f-name" placeholder="">
+                                                            <div class="col-lg-6 pd-right-none no-pd ">
+                                                                <div class="inpt-field ">
+                                                                    <input type="text " name="f-name " placeholder=" ">
                                                                 </div>
                                                                 <!--inpt-field end-->
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-6">
-                                                    <div class="cc-head">
-                                                        <h5>Cvv (Security Code) <i class="fa fa-question-circle"></i></h5>
+                                                <div class="col-lg-6 ">
+                                                    <div class="cc-head ">
+                                                        <h5>Cvv (Security Code) <i class="fa fa-question-circle "></i></h5>
                                                     </div>
-                                                    <div class="inpt-field">
-                                                        <input type="text" name="l-name" placeholder="">
+                                                    <div class="inpt-field ">
+                                                        <input type="text " name="l-name " placeholder=" ">
                                                     </div>
                                                     <!--inpt-field end-->
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <button type="submit">Continue</button>
+                                                <div class="col-lg-12 ">
+                                                    <button type="submit ">Continue</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -299,53 +332,53 @@
                         </div>
                         <!--main-ws-sec end-->
                     </div>
-                    <div class="col-lg-3">
-                        <div class="right-sidebar">
-                            <div class="message-btn">
-                                <a title=""><i class="fa fa-envelope"></i> Message</a>
+                    <div class="col-lg-3 ">
+                        <div class="right-sidebar ">
+                            <div class="message-btn ">
+                                <a title=" "><i class="fa fa-envelope "></i> Message</a>
                             </div>
-                            <div class="widget widget-portfolio">
-                                <div class="wd-heady">
+                            <div class="widget widget-portfolio ">
+                                <div class="wd-heady ">
                                     <h3>Portfolio</h3>
-                                    <img src="../../assets/images/photo-icon.png" alt="">
+                                    <img src="../../assets/images/photo-icon.png " alt=" ">
                                 </div>
-                                <div class="pf-gallery">
+                                <div class="pf-gallery ">
                                     <ul>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery1.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery1.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery2.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery2.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery3.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery3.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery4.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery4.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery5.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery5.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery6.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery6.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery7.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery7.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery8.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery8.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery9.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery9.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery10.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery10.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery11.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery11.png " alt=" "></a>
                                         </li>
                                         <li>
-                                            <a title=""><img src="../../assets/images/resources/pf-gallery12.png" alt=""></a>
+                                            <a title=" "><img src="../../assets/images/resources/pf-gallery12.png " alt=" "></a>
                                         </li>
                                     </ul>
                                 </div>
