@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HelpmePostComponent } from './helpme-post/helpme-post.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AllMessagesComponent } from './all-messages/all-messages.component';
 import { ProfileSettingComponent } from './profile-setting/profile-setting.component';
@@ -23,6 +22,8 @@ import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { UserService } from './user.service';
+import { PostService } from './post.service';
+
 
 
 
@@ -31,7 +32,6 @@ import { UserService } from './user.service';
     AppComponent,
     TemplateComponent,
     NavBarComponent,
-    HelpmePostComponent,
     ProfileComponent,
     AllMessagesComponent,
     ProfileSettingComponent,
@@ -52,7 +52,7 @@ import { UserService } from './user.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthService,UserService],
+  providers: [AuthService,UserService,PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -30,7 +30,7 @@
                                         <span>155</span>
                                     </li>
                                     <li>
-                                        <a href="#" title="">View Profile</a>
+                                        <a title="">View Profile</a>
                                     </li>
                                 </ul>
                             </div>
@@ -43,30 +43,6 @@
                                 <!--sd-title end-->
                                 <div class="suggestions-list">
                                     <div class="suggestion-usd">
-                                        <img src="../../assets/images/resources/s1.png" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="../../assets/images/resources/s2.png" alt="">
-                                        <div class="sgt-text">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="../../assets/images/resources/s3.png" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Poonam</h4>
-                                            <span>Wordpress Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
                                         <img src="../../assets/images/resources/s4.png" alt="">
                                         <div class="sgt-text">
                                             <h4>Bill Gates</h4>
@@ -74,24 +50,9 @@
                                         </div>
                                         <span><i class="la la-plus"></i></span>
                                     </div>
-                                    <div class="suggestion-usd">
-                                        <img src="../../assets/images/resources/s5.png" alt="">
-                                        <div class="sgt-text">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
-                                    <div class="suggestion-usd">
-                                        <img src="../../assets/images/resources/s6.png" alt="">
-                                        <div class="sgt-text">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus"></i></span>
-                                    </div>
+
                                     <div class="view-more">
-                                        <a href="#" title="">View More</a>
+                                        <a title="">View More</a>
                                     </div>
                                 </div>
                             </div>
@@ -113,353 +74,62 @@
                             </div>
                             <!--post-topbar end-->
                             <div class="posts-section ">
-                                <div class="post-bar ">
-                                    <div class="post_topbar ">
+                                <div class="post-bar " *ngFor="let post of posts">
+                                    <div class=" post_topbar ">
                                         <div class="usy-dt ">
-                                            <img src="../../assets/images/resources/us-pic.png " alt=" ">
+                                            <img src="{{img}}" style="height: 50px">
                                             <div class="usy-name ">
-                                                <h3>John Doe</h3>
-                                                <span><img src="../../assets/images/clock.png " alt=" ">3 min ago</span>
+                                                <h3>{{user.name}}</h3>
+                                                <span><img src="../../assets/images/clock.png " >{{post.created_at}}</span>
                                             </div>
                                         </div>
                                         <div class="ed-opts ">
                                             <a class="ed-opts-open "><i class="la la-ellipsis-v "></i></a>
                                             <ul class="ed-options ">
                                                 <li><a>Edit Post</a></li>
-                                                <li><a>Unsaved</a></li>
-                                                <li><a>Unbid</a></li>
-                                                <li><a>Close</a></li>
-                                                <li><a>Hide</a></li>
+                                                <li><a>Delete</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                     <div class="epi-sec ">
                                         <ul class="descp ">
-                                            <li><img src="../../assets/images/icon8.png " alt=" "><span>Epic Coder</span></li>
-                                            <li><img src="../../assets/images/icon9.png " alt=" "><span>India</span></li>
+                                            <li><img src="../../assets/images/icon8.png "><span>{{user.occupation}}</span></li>
+                                            <li><img src="../../assets/images/icon9.png "><span>{{user.institution}}</span></li>
                                         </ul>
                                         <ul class="bk-links ">
                                             <li><a><i class="la la-bookmark "></i></a></li>
                                             <li><a><i class="la la-envelope "></i></a></li>
                                         </ul>
                                     </div>
-                                    <div class="job_descp ">
-                                        <h3>Senior Wordpress Developer</h3>
-                                        <ul class="job-dt ">
-                                            <li><a>Full Time</a></li>
-                                            <li><span>$30 / hr</span></li>
+                                    <div class="job_descp">
+                                        <h3>{{post.title}}</h3>
+                                        <ul class="job-dt">
+                                            <li><a>{{post.status}}</a></li>
+                                            <li><span>Cost : {{post.cost}}</span></li>
                                         </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a>view more</a></p>
-                                        <ul class="skill-tags ">
-                                            <li><a>HTML</a></li>
-                                            <li><a>PHP</a></li>
-                                            <li><a>CSS</a></li>
-                                            <li><a>Javascript</a></li>
-                                            <li><a>Wordpress</a></li>
+                                        <p> {{post.description}} </p>
+                                        <ul class="skill-tags" style="display: inline">
+                                            <li *ngFor="let skill of post.skills"><a>{{skill}}</a></li>
                                         </ul>
                                     </div>
+                                    <!--
                                     <div class="job-status-bar ">
                                         <ul class="like-com ">
                                             <li>
                                                 <a><i class="la la-heart "></i> Like</a>
-                                                <img src="../../assets/images/liked-img.png " alt=" ">
+                                                <img src="../../assets/images/liked-img.png ">
                                                 <span>25</span>
                                             </li>
                                             <li>
-                                                <a class="com "><img src="../../assets/images/com.png " alt=" "> Comment 15</a>
+                                                <a class="com "><img src="../../assets/images/com.png "> Comment 15</a>
                                             </li>
                                         </ul>
                                         <a><i class="la la-eye "></i>Views 50</a>
                                     </div>
+                                -->
                                 </div>
-                                <!--post-bar end-->
-                                <div class="top-profiles ">
-                                    <div class="pf-hd ">
-                                        <h3>Top Profiles</h3>
-                                        <i class="la la-ellipsis-v "></i>
-                                    </div>
-                                    <div class="profiles-slider ">
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user1.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user2.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user3.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user1.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user2.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                        <div class="user-profy ">
-                                            <img src="../../assets/images/resources/user3.png " alt=" ">
-                                            <h3>John Doe</h3>
-                                            <span>Graphic Designer</span>
-                                            <ul>
-                                                <li><a class="followw ">Follow</a></li>
-                                                <li>
-                                                    <a class="envlp "><img src="../../assets/images/envelop.png " alt=" "></a>
-                                                </li>
-                                                <li><a class="hire ">hire</a></li>
-                                            </ul>
-                                            <a>View Profile</a>
-                                        </div>
-                                        <!--user-profy end-->
-                                    </div>
-                                    <!--profiles-slider end-->
-                                </div>
-                                <!--top-profiles end-->
-                                <div class="post-bar ">
-                                    <div class="post_topbar ">
-                                        <div class="usy-dt ">
-                                            <img src="../../assets/images/resources/us-pic.png " alt=" ">
-                                            <div class="usy-name ">
-                                                <h3>John Doe</h3>
-                                                <span><img src="../../assets/images/clock.png " alt=" ">3 min ago</span>
-                                            </div>
-                                        </div>
-                                        <div class="ed-opts ">
-                                            <a class="ed-opts-open "><i class="la la-ellipsis-v "></i></a>
-                                            <ul class="ed-options ">
-                                                <li><a>Edit Post</a></li>
-                                                <li><a>Unsaved</a></li>
-                                                <li><a>Unbid</a></li>
-                                                <li><a>Close</a></li>
-                                                <li><a>Hide</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="epi-sec ">
-                                        <ul class="descp ">
-                                            <li><img src="../../assets/images/icon8.png " alt=" "><span>Epic Coder</span></li>
-                                            <li><img src="../../assets/images/icon9.png " alt=" "><span>India</span></li>
-                                        </ul>
-                                        <ul class="bk-links ">
-                                            <li><a><i class="la la-bookmark "></i></a></li>
-                                            <li><a><i class="la la-envelope "></i></a></li>
-                                            <li><a class="bid_now ">Bid Now</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job_descp ">
-                                        <h3>Senior Wordpress Developer</h3>
-                                        <ul class="job-dt ">
-                                            <li><a>Full Time</a></li>
-                                            <li><span>$30 / hr</span></li>
-                                        </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a>view more</a></p>
-                                        <ul class="skill-tags ">
-                                            <li><a>HTML</a></li>
-                                            <li><a>PHP</a></li>
-                                            <li><a>CSS</a></li>
-                                            <li><a>Javascript</a></li>
-                                            <li><a>Wordpress</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="job-status-bar ">
-                                        <ul class="like-com ">
-                                            <li>
-                                                <a><i class="la la-heart "></i> Like</a>
-                                                <img src="../../assets/images/liked-img.png " alt=" ">
-                                                <span>25</span>
-                                            </li>
-                                            <li>
-                                                <a class="com "><img src="../../assets/images/com.png " alt=" "> Comment 15</a>
-                                            </li>
-                                        </ul>
-                                        <a><i class="la la-eye "></i>Views 50</a>
-                                    </div>
-                                </div>
-                                <!--post-bar end-->
-                                <div class="posty ">
-                                    <div class="post-bar no-margin ">
-                                        <div class="post_topbar ">
-                                            <div class="usy-dt ">
-                                                <img src="../../assets/images/resources/us-pc2.png " alt=" ">
-                                                <div class="usy-name ">
-                                                    <h3>John Doe</h3>
-                                                    <span><img src="../../assets/images/clock.png " alt=" ">3 min ago</span>
-                                                </div>
-                                            </div>
-                                            <div class="ed-opts ">
-                                                <a class="ed-opts-open "><i class="la la-ellipsis-v "></i></a>
-                                                <ul class="ed-options ">
-                                                    <li><a>Edit Post</a></li>
-                                                    <li><a>Unsaved</a></li>
-                                                    <li><a>Unbid</a></li>
-                                                    <li><a>Close</a></li>
-                                                    <li><a>Hide</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="epi-sec ">
-                                            <ul class="descp ">
-                                                <li><img src="../../assets/images/icon8.png " alt=" "><span>Epic Coder</span></li>
-                                                <li><img src="../../assets/images/icon9.png " alt=" "><span>India</span></li>
-                                            </ul>
-                                            <ul class="bk-links ">
-                                                <li><a><i class="la la-bookmark "></i></a></li>
-                                                <li><a><i class="la la-envelope "></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job_descp ">
-                                            <h3>Senior Wordpress Developer</h3>
-                                            <ul class="job-dt ">
-                                                <li><a>Full Time</a></li>
-                                                <li><span>$30 / hr</span></li>
-                                            </ul>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a>view more</a></p>
-                                            <ul class="skill-tags ">
-                                                <li><a>HTML</a></li>
-                                                <li><a>PHP</a></li>
-                                                <li><a>CSS</a></li>
-                                                <li><a>Javascript</a></li>
-                                                <li><a>Wordpress</a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="job-status-bar ">
-                                            <ul class="like-com ">
-                                                <li>
-                                                    <a><i class="la la-heart "></i> Like</a>
-                                                    <img src="../../assets/images/liked-img.png " alt=" ">
-                                                    <span>25</span>
-                                                </li>
-                                                <li>
-                                                    <a class="com "><img src="../../assets/images/com.png " alt=" "> Comment 15</a>
-                                                </li>
-                                            </ul>
-                                            <a><i class="la la-eye "></i>Views 50</a>
-                                        </div>
-                                    </div>
-                                    <!--post-bar end-->
-                                    <div class="comment-section ">
-                                        <div class="plus-ic ">
-                                            <i class="la la-plus "></i>
-                                        </div>
-                                        <div class="comment-sec ">
-                                            <ul>
-                                                <li>
-                                                    <div class="comment-list ">
-                                                        <div class="bg-img ">
-                                                            <img src="../../assets/images/resources/bg-img1.png " alt=" ">
-                                                        </div>
-                                                        <div class="comment ">
-                                                            <h3>John Doe</h3>
-                                                            <span><img src="../../assets/images/clock.png " alt=" "> 3 min ago</span>
-                                                            <p>Lorem ipsum dolor sit amet, </p>
-                                                            <a class="active "><i class="fa fa-reply-all "></i>Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <!--comment-list end-->
-                                                    <ul>
-                                                        <li>
-                                                            <div class="comment-list ">
-                                                                <div class="bg-img ">
-                                                                    <img src="../../assets/images/resources/bg-img2.png " alt=" ">
-                                                                </div>
-                                                                <div class="comment ">
-                                                                    <h3>John Doe</h3>
-                                                                    <span><img src="../../assets/images/clock.png " alt=" "> 3 min ago</span>
-                                                                    <p>Hi John </p>
-                                                                    <a><i class="fa fa-reply-all "></i>Reply</a>
-                                                                </div>
-                                                            </div>
-                                                            <!--comment-list end-->
-                                                        </li>
-                                                    </ul>
-                                                </li>
-                                                <li>
-                                                    <div class="comment-list ">
-                                                        <div class="bg-img ">
-                                                            <img src="../../assets/images/resources/bg-img3.png " alt=" ">
-                                                        </div>
-                                                        <div class="comment ">
-                                                            <h3>John Doe</h3>
-                                                            <span><img src="../../assets/images/clock.png " alt=" "> 3 min ago</span>
-                                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-                                                            <a><i class="fa fa-reply-all "></i>Reply</a>
-                                                        </div>
-                                                    </div>
-                                                    <!--comment-list end-->
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!--comment-sec end-->
-                                        <div class="post-comment ">
-                                            <div class="cm_img ">
-                                                <img src="../../assets/images/resources/bg-img4.png " alt=" ">
-                                            </div>
-                                            <div class="comment_box ">
-                                                <form>
-                                                    <input type="text " placeholder="Post a comment ">
-                                                    <button type="submit ">Send</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <!--post-comment end-->
-                                    </div>
-                                    <!--comment-section end-->
-                                </div>
-                                <!--posty end-->
                                 <div class="process-comm ">
-                                    <a><img src="../../assets/images/process-icon.png " alt=" "></a>
+                                    <a><img src="../../assets/images/process-icon.png "></a>
                                 </div>
                                 <!--process-comm end-->
                             </div>
@@ -470,9 +140,9 @@
                     <div class="col-lg-3 pd-right-none no-pd ">
                         <div class="right-sidebar ">
                             <div class="widget widget-about ">
-                                <img src="../../assets/images/wd-logo.png " alt=" ">
+                                <img src="../../assets/images/wd-logo.png ">
                                 <h3>Track Time on Workwise</h3>
-                                <span>Pay only for the Hours worked</span>
+                                <span>hani houni </span>
                                 <div class="sign_link ">
                                     <h3><a>Sign up</a></h3>
                                     <a>Learn More</a>
@@ -578,70 +248,8 @@
                                 </div>
                                 <!--jobs-list end-->
                             </div>
-                            <!--widget-jobs end-->
-                            <div class="widget suggestions full-width ">
-                                <div class="sd-title ">
-                                    <h3>Most Viewed People</h3>
-                                    <i class="la la-ellipsis-v "></i>
-                                </div>
-                                <!--sd-title end-->
-                                <div class="suggestions-list ">
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s1.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s2.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s3.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>Poonam</h4>
-                                            <span>Wordpress Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s4.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>Bill Gates</h4>
-                                            <span>C &amp; C++ Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s5.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>Jessica William</h4>
-                                            <span>Graphic Designer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="suggestion-usd ">
-                                        <img src="../../assets/images/resources/s6.png " alt=" ">
-                                        <div class="sgt-text ">
-                                            <h4>John Doe</h4>
-                                            <span>PHP Developer</span>
-                                        </div>
-                                        <span><i class="la la-plus "></i></span>
-                                    </div>
-                                    <div class="view-more ">
-                                        <a>View More</a>
-                                    </div>
-                                </div>
-                                <!--suggestions-list end-->
-                            </div>
+
                         </div>
-                        <!--right-sidebar end-->
                     </div>
                 </div>
             </div>
@@ -651,48 +259,48 @@
 </main>
 
 
-<div class="post-popup job_post " id="helpRequestPost">
+<div class="post-popup job_post " id="helpRequestPost ">
     <div class="post-project ">
         <h3>Post a Help Request </h3>
         <div class="post-project-fields ">
-            <form (ngSubmit)="postHelpRequest(f)" #f="ngForm">
+            <form (ngSubmit)="postHelpRequest(f) " #f="ngForm">
                 <div class="row ">
                     <div class="col-lg-12 ">
-                        <input type="text" name="title" ngModel placeholder="Title" required>
+                        <input type="text" name="title" ngModel placeholder="Title " required>
                     </div>
                     <div class="col-lg-12 ">
-                        <input type="text" name="short_description" ngModel placeholder="Short Description" required>
+                        <input type="text " name="short_description" ngModel placeholder="Short Description " required>
                     </div>
 
                     <div class="col-lg-12 ">
-                        <input type="text" name="skills" ngModel placeholder="Skills" required>
+                        <input type="text " name="skills" ngModel placeholder="Skills" required>
                     </div>
                     <div class="col-lg-6 ">
                         <div class="price-br ">
-                            <input type="number" name="cost" ngModel value="1" required>
+                            <input type="number " name="cost" ngModel value="1" required>
                             <i class="la la-dollar "></i>
                         </div>
                     </div>
                     <div class="col-lg-6 ">
                         <div class="inp-field ">
                             <select ngModel name="status" required>
-                                    <option>Open</option>
-                                    <option>Selective</option>
+                                    <option>open</option>
+                                    <option>selective</option>
                              </select>
                         </div>
                     </div>
                     <div class="col-lg-12 ">
-                        <textarea name="description" row="4" placeholder="Description" ngModel required></textarea>
+                        <textarea name="description" row="4 " placeholder="Description" ngModel required></textarea>
                     </div>
                     <!--
                     <div class="col-lg-12 ">
-                        <input type="file" class="form-control-file" id="customFileLang">
+                        <input type="file " class="form-control-file " id="customFileLang ">
                     </div>
                 -->
                     <div class="col-lg-12 ">
                         <ul>
                             <li>
-                                <button class="active" type="submit" style="margin-left: 425px" [disabled]="!f.valid">Post</button>
+                                <button class="active " type="submit " style="margin-left: 425px " [disabled]="!f.valid ">Post</button>
                             </li>
                         </ul>
                     </div>
@@ -711,13 +319,13 @@
 <div class="chatbox-list ">
     <div class="chatbox ">
         <div class="chat-mg ">
-            <a><img src="../../assets/images/resources/usr-img1.png " alt=" "></a>
+            <a><img src="../../assets/images/resources/usr-img1.png "></a>
             <span>2</span>
         </div>
         <div class="conversation-box ">
             <div class="con-title mg-3 ">
                 <div class="chat-user-info ">
-                    <img src="../../assets/images/resources/us-img1.png " alt=" ">
+                    <img src="../../assets/images/resources/us-img1.png ">
                     <h3>John Doe <span class="status-info "></span></h3>
                 </div>
                 <div class="st-icons ">
@@ -761,12 +369,12 @@
     </div>
     <div class="chatbox ">
         <div class="chat-mg ">
-            <a><img src="../../assets/images/resources/usr-img2.png " alt=" "></a>
+            <a><img src="../../assets/images/resources/usr-img2.png "></a>
         </div>
         <div class="conversation-box ">
             <div class="con-title mg-3 ">
                 <div class="chat-user-info ">
-                    <img src="../../assets/images/resources/us-img1.png " alt=" ">
+                    <img src="../../assets/images/resources/us-img1.png ">
                     <h3>John Doe <span class="status-info "></span></h3>
                 </div>
                 <div class="st-icons ">
@@ -810,7 +418,7 @@
     </div>
     <div class="chatbox ">
         <div class="chat-mg bx ">
-            <a><img src="../../assets/images/chat.png " alt=" "></a>
+            <a><img src="../../assets/images/chat.png "></a>
             <span>2</span>
         </div>
         <div class="conversation-box ">
@@ -821,12 +429,12 @@
             <div class="chat-list ">
                 <div class="conv-list active ">
                     <div class="usrr-pic ">
-                        <img src="../../assets/images/resources/usy1.png " alt=" ">
+                        <img src="../../assets/images/resources/usy1.png ">
                         <span class="active-status activee "></span>
                     </div>
                     <div class="usy-info ">
                         <h3>John Doe</h3>
-                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " alt=" "></span>
+                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " ></span>
                     </div>
                     <div class="ct-time ">
                         <span>1:55 PM</span>
@@ -835,11 +443,11 @@
                 </div>
                 <div class="conv-list ">
                     <div class="usrr-pic ">
-                        <img src="../../assets/../../assets/images/resources/usy2.png " alt=" ">
+                        <img src="../../assets/../../assets/images/resources/usy2.png ">
                     </div>
                     <div class="usy-info ">
                         <h3>John Doe</h3>
-                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " alt=" "></span>
+                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " ></span>
                     </div>
                     <div class="ct-time ">
                         <span>11:39 PM</span>
@@ -847,11 +455,11 @@
                 </div>
                 <div class="conv-list ">
                     <div class="usrr-pic ">
-                        <img src="../../assets/images/resources/usy3.png " alt=" ">
+                        <img src="../../assets/images/resources/usy3.png ">
                     </div>
                     <div class="usy-info ">
                         <h3>John Doe</h3>
-                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " alt=" "></span>
+                        <span>Lorem ipsum dolor <img src="../../assets/images/smley.png " ></span>
                     </div>
                     <div class="ct-time ">
                         <span>0.28 AM</span>

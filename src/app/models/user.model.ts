@@ -9,4 +9,5 @@ export class User {
  skills : string[];
  institution : string;
  occupation : string;
+ view_more : boolean;
 }
