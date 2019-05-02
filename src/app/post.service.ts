@@ -29,5 +29,14 @@ export class PostService {
         }
       );
   }
+  deletePost(id : number){
+    const token = this.authService.getToken();
+    return this.http.post('http://127.0.0.1:8000/api/user/helpme'+id+'/delete?token='+token,'')
+    .map(
+        (response: Response) => {
+          return response.json();
+        }
+      );
+  }
   
 }

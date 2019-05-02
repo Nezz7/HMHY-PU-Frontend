@@ -8,6 +8,11 @@
     height: 30px;
 }
 
+.helpme {
+    background-color: white;
+    border-radius: 50%;
+}
+
 .capLetter {
     text-transform: capitalize;
 }

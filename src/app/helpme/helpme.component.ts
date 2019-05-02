@@ -57,4 +57,17 @@ export class HelpmeComponent implements OnInit {
           res => console.log ("getting "+ res),
         )
   }
+  removeHelpRequest(id : number){
+      console.log(id);
+      this.postservice.deletePost(id).subscribe(
+        res=>console.log(res),
+        err=>console.log(err)
+      )
+      for( var i = 0; i < this.posts.length; i++){ 
+        if ( this.posts[i].id === id) {
+          this.posts.splice(i, 1); 
+          break;
+        }
+     }
+    }
 }
