@@ -38,5 +38,10 @@ export class PostService {
         }
       );
   }
+  getPost(skills : string[]){
+      
+
+
+  }
   
 }
