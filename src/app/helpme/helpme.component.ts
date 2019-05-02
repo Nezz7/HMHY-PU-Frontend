@@ -45,10 +45,10 @@ export class HelpmeComponent implements OnInit {
       this.newPost.maker_id=this.user.id;
       console.log(this.newPost);
       this.postservice.createPost(this.newPost).subscribe(
-        res => {console.log (res),this.cond=false},
-        error=>{console.log("Here :"+error),this.cond=true}
+        res => {console.log (res),this.cond=true},
+        error=>{console.log("Here :"+error),this.cond=false}
     );
-      if (!(this.cond))
+      if (this.cond)
        this.posts.push(this.newPost);
   }
   getAllHelpRequest (){
@@ -60,10 +60,11 @@ export class HelpmeComponent implements OnInit {
   removeHelpRequest(id : number){
       console.log(id);
       this.postservice.deletePost(id).subscribe(
-        res=>console.log(res),
-        err=>console.log(err)
+        res=>{console.log(res),this.cond=true},
+        err=>{console.log(err),this.cond=false}
       )
-      for( var i = 0; i < this.posts.length; i++){ 
+      if (this.cond){
+      for( var i = 0; i < this.posts.length; i++)
         if ( this.posts[i].id === id) {
           this.posts.splice(i, 1); 
           break;

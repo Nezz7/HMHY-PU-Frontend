@@ -11,5 +11,6 @@ export class  Post {
     description : string;
     title : string;
     file : File;
+    created_at : string;
    }
    

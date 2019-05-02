@@ -21,23 +21,17 @@
                                         <i class="fa fa-camera upload-button" onclick="document.getElementById('uploadfile').click();"></i>
                                         <input type="file" class="file-upload" (change)="onFiledSelected($event);" accept="image/*" id="uploadfile" />
                                     </a>
-
-
                                 </div>
                                 <!--user-pro-img end-->
                                 <div class="user_pro_status">
-                                    <ul class="flw-hr">
-                                        <li><a class="flww"><i class="la la-plus"></i> Follow</a></li>
-                                        <li><a class="hre">Hire</a></li>
-                                    </ul>
-                                    <ul class="flw-status">
+                                    <ul class="user-fw-status">
                                         <li>
-                                            <span>Following</span>
-                                            <b>34</b>
+                                            <h4>Tokens</h4>
+                                            <span>{{user.hp}}</span>
                                         </li>
                                         <li>
-                                            <span>Followers</span>
-                                            <b>155</b>
+                                            <h4>Score</h4>
+                                            <span>{{user.score}}</span>
                                         </li>
                                     </ul>
                                 </div>
