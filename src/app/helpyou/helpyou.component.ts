@@ -48,7 +48,7 @@ export class HelpyouComponent implements OnInit {
   onAddSkill(form : NgForm){
     this.userService.addSkill(form.value.skill)
     .subscribe(
-      user=>{this.user=user,this.getHelpYouRequest(this.user.skills)},
+      data=>{this.user=data,this.getHelpYouRequest(this.user.skills)},
       error=>console.log(error)
     );
     this.addSkill=false;
@@ -56,7 +56,7 @@ export class HelpyouComponent implements OnInit {
   onDeleteSkill(form : NgForm){
     this.userService.deleteSkill(form.value.skill)
     .subscribe(
-        user=>{this.user=user,this.getHelpYouRequest(this.user.skills)},
+        data=>{this.user=data,this.getHelpYouRequest(this.user.skills)},
       error=>console.log(error)
      
     );

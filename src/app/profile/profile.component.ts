@@ -89,7 +89,7 @@ onClickOverview(){
 onAddSkill(form : NgForm){
   this.userservice.addSkill(form.value.skill)
   .subscribe(
-    user=> this.user=user,
+    data=> this.user=data,
     error=>console.log(error)
   );
   this.addSkill=false;
@@ -97,7 +97,7 @@ onAddSkill(form : NgForm){
 onDeleteSkill(form : NgForm){
   this.userservice.deleteSkill(form.value.skill)
   .subscribe(
-      user=> this.user=user,
+      data=> this.user=data,
     error=>console.log(error)
    
   );

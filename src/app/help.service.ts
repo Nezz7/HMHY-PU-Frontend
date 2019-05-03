@@ -13,7 +13,7 @@ export class HelpService {
  
   getSessionMe (){
     const token = this.authService.getToken();
-    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpme?token='+token,)
+    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpme?token='+token)
     .map(
         (response: Response) => {
           return response.json();
@@ -22,7 +22,7 @@ export class HelpService {
   }
   getSessionYou (){
     const token = this.authService.getToken();
-    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpyou?token='+token,)
+    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpyou?token='+token)
     .map(
         (response: Response) => {
           return response.json();
@@ -31,7 +31,7 @@ export class HelpService {
   }
   getHeadMessage (id : number , head : number){
     const token = this.authService.getToken();
-    return this.http.get('http://127.0.0.1:8000/api/user/session'+id+'/head'+head+'?token='+token,)
+    return this.http.get('http://127.0.0.1:8000/api/user/session'+id+'/head'+head+'?token='+token)
     .map(
         (response: Response) => {
           return response.json();
@@ -43,8 +43,9 @@ export class HelpService {
     const body = JSON.stringify({
       "message": message,
     });
+    console.log(body);
     const headers = new Headers({'Content-Type':'application/json'});
-    return this.http.post('http://127.0.0.1:8000/api/user/session'+id+'/postmessage?token'+token,body,{headers :headers})
+    return this.http.post('http://127.0.0.1:8000/api/user/session'+id+'/postmessage?token='+token,body,{headers :headers})
     .map(
         (response: Response) => {
           return response.json();

@@ -48,7 +48,7 @@ export class HelpmeComponent implements OnInit {
         res => {console.log (res),this.cond=true},
         error=>{console.log("Here :"+error),this.cond=false}
     );
-      if (this.cond)
+      
        this.posts.push(this.newPost);
   }
   getAllHelpRequest (){
