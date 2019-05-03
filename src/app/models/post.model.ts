@@ -1,3 +1,5 @@
+import { User } from "./user.model";
+
 export class  Post {
     id : number;
     maker_id : number;
@@ -12,5 +14,6 @@ export class  Post {
     title : string;
     file : File;
     created_at : string;
+    maker : User;
    }
    

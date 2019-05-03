@@ -63,50 +63,38 @@
                             <div class="posts-section">
 
                                 <!--post-bar end-->
-                                <div class="post-bar">
+                                <div class="post-bar" *ngFor="let post of posts; let i = index">
+
                                     <div class="post_topbar">
                                         <div class="usy-dt">
-                                            <img src="../../assets/images/resources/us-pic.png">
+                                            <img src="http://localhost:8000/api/profile{{post.maker_id}}/getavatar" style="height: 50px">
                                             <div class="usy-name">
-                                                <h3>John Doe</h3>
-                                                <span><img src="../../assets/images/clock.png" >3 min ago</span>
+                                                <h3> {{post.maker.name}}</h3>
+                                                <span><img src="../../assets/images/clock.png" >{{post.created_at}}</span>
                                             </div>
                                         </div>
-                                        <div class="ed-opts">
-                                            <a class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-                                            <ul class="ed-options">
-                                                <li><a>Edit Post</a></li>
-                                                <li><a>Unsaved</a></li>
-                                                <li><a>Unbid</a></li>
-                                                <li><a>Close</a></li>
-                                                <li><a>Hide</a></li>
-                                            </ul>
-                                        </div>
+
                                     </div>
                                     <div class="epi-sec">
                                         <ul class="descp">
-                                            <li><img src="../../assets/images/icon8.png"><span>Epic Coder</span></li>
-                                            <li><img src="../../assets/images/icon9.png"><span>India</span></li>
+                                            <li><img src="../../assets/images/icon8.png"><span>{{post.maker.occupation}}</span></li>
+                                            <li><img src="../../assets/images/icon9.png"><span>{{post.maker.institution}}</span></li>
                                         </ul>
                                         <ul class="bk-links">
                                             <li><a><i class="la la-bookmark"></i></a></li>
                                             <li><a><i class="la la-envelope"></i></a></li>
-                                            <li><a class="bid_now">Bid Now</a></li>
+                                            <li><a class="bid_now">Help Now</a></li>
                                         </ul>
                                     </div>
                                     <div class="job_descp">
-                                        <h3>Senior Wordpress Developer</h3>
+                                        <h3>{{post.title}}</h3>
                                         <ul class="job-dt">
-                                            <li><a>Full Time</a></li>
-                                            <li><span>$30 / hr</span></li>
+                                            <li><a>{{post.status}}</a></li>
+                                            <li><span>Cost : {{post.cost}}</span></li>
                                         </ul>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a>view more</a></p>
-                                        <ul class="skill-tags">
-                                            <li><a>HTML</a></li>
-                                            <li><a>PHP</a></li>
-                                            <li><a>CSS</a></li>
-                                            <li><a>Javascript</a></li>
-                                            <li><a>Wordpress</a></li>
+                                        <p> {{post.description}} </p>
+                                        <ul class="skill-tags" style="display: inline">
+                                            <li *ngFor="let skill of post.skills"><a>{{skill}}</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -128,30 +116,45 @@
                             </div>
                             <!--widget-about end-->
                             <div class="widget widget-jobs">
-                                <div class="sd-title">
-                                    <h3>Top Jobs</h3>
-                                    <i class="la la-ellipsis-v"></i>
-                                </div>
-                                <div class="jobs-list">
-                                    <div class="job-info">
-                                        <div class="job-details">
-                                            <h3>Senior Product Designer</h3>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                        </div>
-                                        <div class="hr-rate">
-                                            <span>$25/hr</span>
-                                        </div>
+                                <div class="user-profile-ov " style="margin-bottom : 0px">
+                                    <h3><a class="skills-open ">Skills</a> <a (click)="deleteSkill=true;"><i class="fa fa-minus-square"></i></a><a (click)="addSkill=true;"><i class="fa fa-plus-square "></i></a> </h3>
+                                    <div *ngIf="!deleteSkill && !addSkill">
+                                        <p *ngIf="skills">update your skills </p>
+                                        <ul *ngIf="!skills">
+                                            <li *ngFor="let skill of user.skills"><a>{{skill}}</a></li>
+                                        </ul>
                                     </div>
-                                    <!--job-info end-->
+                                    <div *ngIf="deleteSkill">
+                                        <div> Deleting a Skill :</div>
+                                        <br>
+                                        <form (ngSubmit)="onDeleteSkill(f)" #f="ngForm" class="form-group ">
+                                            <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-light mt-2" style="margin-left : 93px" (click)="deleteSkill=false">Skip</button>
+                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Delete</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div *ngIf="addSkill">
+                                        <div class="mb-3">Adding a Skill :</div>
+                                        <form (ngSubmit)="onAddSkill(f)" #f="ngForm" class="form-group ">
+                                            <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
+                                            <div class="btn-group" role="group">
+                                                <button class="btn btn-light mt-2" style="margin-left : 113px" (click)="addSkill=false">Skip</button>
+                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Add</button>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <!--jobs-list end-->
+                                <!--job-info end-->
                             </div>
+                            <!--jobs-list end-->
                         </div>
-                        <!--right-sidebar end-->
                     </div>
+                    <!--right-sidebar end-->
                 </div>
             </div>
-            <!-- main-section-data end-->
         </div>
+        <!-- main-section-data end-->
     </div>
 </main>

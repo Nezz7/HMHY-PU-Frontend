@@ -116,37 +116,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <!--user-profile-ov end-->
-                                <div class="user-profile-ov ">
-                                    <h3><a class="skills-open ">Skills</a> <a (click)="deleteSkill=true;"><i class="fa fa-minus-square"></i></a><a (click)="addSkill=true;"><i class="fa fa-plus-square "></i></a> </h3>
-                                    <div *ngIf="!deleteSkill && !addSkill">
-                                        <p *ngIf="skills">Add a skill </p>
-                                        <ul *ngIf="!skills">
-                                            <li *ngFor="let skill of user.skills"><a>{{skill}}</a></li>
-                                        </ul>
-                                    </div>
-                                    <div *ngIf="deleteSkill">
-                                        <div> Deleting a Skill :</div>
-                                        <br>
-                                        <form (ngSubmit)="onDeleteSkill(f)" #f="ngForm" class="form-group ">
-                                            <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="deleteSkill=false">Skip</button>
-                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Delete</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div *ngIf="addSkill">
-                                        <div class="mb-3">Adding a Skill :</div>
-                                        <form (ngSubmit)="onAddSkill(f)" #f="ngForm" class="form-group ">
-                                            <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
-                                            <div class="btn-group" role="group" aria-label="Basic example">
-                                                <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="addSkill=false">Skip</button>
-                                                <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Add</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
+
                                 <!--user-profile-ov end-->
                             </div>
 
@@ -158,54 +128,42 @@
                             <div class="message-btn ">
                                 <a><i class="fa fa-envelope "></i> Message</a>
                             </div>
-                            <div class="widget widget-portfolio ">
-                                <div class="wd-heady ">
-                                    <h3>Portfolio</h3>
-                                    <img src="../../assets/images/photo-icon.png ">
-                                </div>
-                                <div class="pf-gallery ">
-                                    <ul>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery1.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery2.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery3.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery4.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery5.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery6.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery7.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery8.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery9.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery10.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery11.png "></a>
-                                        </li>
-                                        <li>
-                                            <a><img src="../../assets/images/resources/pf-gallery12.png "></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!--pf-gallery end-->
+                            <div class="widget widget-about">
+                                <img src="../../assets/images/helpmehelpyou-01.png" style="height : 300px">
                             </div>
+                            <!--pf-gallery end-->
                             <!--widget-portfolio end-->
+                        </div>
+                        <!--user-profile-ov end-->
+                        <div class="user-profile-ov ">
+                            <h3><a class="skills-open ">Skills</a> <a (click)="deleteSkill=true;"><i class="fa fa-minus-square"></i></a><a (click)="addSkill=true;"><i class="fa fa-plus-square "></i></a> </h3>
+                            <div *ngIf="!deleteSkill && !addSkill">
+                                <p *ngIf="skills">Add a skill </p>
+                                <ul *ngIf="!skills">
+                                    <li *ngFor="let skill of user.skills"><a>{{skill}}</a></li>
+                                </ul>
+                            </div>
+                            <div *ngIf="deleteSkill">
+                                <div> Deleting a Skill :</div>
+                                <br>
+                                <form (ngSubmit)="onDeleteSkill(f)" #f="ngForm" class="form-group ">
+                                    <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="deleteSkill=false">Skip</button>
+                                        <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Delete</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div *ngIf="addSkill">
+                                <div class="mb-3">Adding a Skill :</div>
+                                <form (ngSubmit)="onAddSkill(f)" #f="ngForm" class="form-group ">
+                                    <input id="skill" class="form-control input-group-xlg " type="text " ngModel name="skill">
+                                    <div class="btn-group" role="group" aria-label="Basic example">
+                                        <button class="btn btn-light mt-2 " style="margin-left: 360px" (click)="addSkill=false">Skip</button>
+                                        <button class="btn btn-primary mt-2 ml-2" type="submit " [disabled]="!f.valid ">Add</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                         <!--right-sidebar end-->
                     </div>

@@ -30,7 +30,7 @@ export class HelpmeComponent implements OnInit {
   onGetProfile (){
     this.userservice.getProfile()
     .subscribe(
-        data  =>this.user=data,
+        data  =>{this.user=data ,console.log(data)},
         error=>console.log("Here :"+error)
     );  
   }

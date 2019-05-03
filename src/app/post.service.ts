@@ -38,10 +38,17 @@ export class PostService {
         }
       );
   }
-  getPost(skills : string[]){
-      
-
-
+  getPostSkill (skills : string[]){
+    const body = JSON.stringify({
+      "skills": skills,
+    });
+    const headers = new Headers({'Content-Type':'application/json'});
+    return this.http.post('http://127.0.0.1:8000/api/helpme/search',body,{headers :headers})
+    .map(
+        (response: Response) => {
+          return response.json();
+        }
+      );
   }
   
 }

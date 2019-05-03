@@ -17,7 +17,6 @@ export class NavBarComponent implements OnInit {
     const token = this.authService.getToken();
     this.name=localStorage.getItem('name');
     this.img='http://localhost:8000/api/user/getavatar?token='+token;
-    console.log("nav-bar : " +this.img);
    }
 
   ngOnInit() {

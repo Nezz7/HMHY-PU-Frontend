@@ -19,6 +19,22 @@ export class UserService {
         }
       );
   }
+  getProfileId (id : number){
+    return this.http.get('http://localhost:8000/api/profile'+id)
+    .map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
+  }
+  getAvatarId (id : number){
+    return this.http.get('http://localhost:8000/api/profile'+id+'/getavatar')
+    .map(
+      (response: Response) => {
+        return response.json();
+      }
+    );
+  }
   getAvatar(){
     const token = this.authService.getToken();
     return this.http.get('http://localhost:8000/api/user/getavatar?token='+token)
@@ -79,7 +95,7 @@ export class UserService {
   }
   deleteSkill (skill : string){
     const token = this.authService.getToken();
-    return   this.http.post('http://127.0.0.1:8000/api/user/removeskill?token='+token,
+    return   this.http.post('http://127.0.0.1:8000/api/user/removeskills?token='+token,
     {
         skills : [skill]
         
