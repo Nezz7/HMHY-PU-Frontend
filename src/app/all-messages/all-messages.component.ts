@@ -16,10 +16,12 @@ export class AllMessagesComponent implements OnInit {
   user = new User ();
   meSessions : Session[];
   youSessions : Session[];
+  curSessions : Session [];
   mysession = new Session();
   message=new Array();
   messages : Message[];
   mymessage= new Message(); 
+  msg  : boolean=false;
   constructor(private userService : UserService, private helpService : HelpService) { }
 
   ngOnInit() {
@@ -44,7 +46,7 @@ export class AllMessagesComponent implements OnInit {
   getSessionYou (){
     this.helpService.getSessionYou().subscribe(
        data => {this.youSessions=data,console.log("youSession: ");console.log(data);
-          this.mysession=this.youSessions[this.youSessions.length-1];
+          this.mysession=this.curSessions[this.curSessions.length-1];
           console.log(this.mysession);
           this.getHeadMessage(this.mysession.id,5);
       },
@@ -70,5 +72,18 @@ export class AllMessagesComponent implements OnInit {
           error=>console.log(error),
     )
   }
+  onSessionMe(){
+      this.msg=true;
+      this.curSessions=this.youSessions;
+      this.mysession=this.curSessions[this.curSessions.length-1];
+      console.log(this.curSessions);
 
+  }
+  onSessionYou(){
+    this.msg=false;
+    this.curSessions=this.meSessions;
+    this.mysession=this.curSessions[this.curSessions.length-1];
+    console.log(this.curSessions);
+
+  }
 }

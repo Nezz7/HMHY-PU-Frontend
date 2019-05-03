@@ -7,8 +7,8 @@
                     <div class="col-lg-4 col-md-12 no-pdd">
                         <div class="msgs-list">
                             <div class="msg-title">
-                                <h3>Help you </h3>
-                                <h3>help me</h3>
+                                <h3 class="btn" (click)="onSessionYou()">Help me </h3>
+                                <h3 class="btn" (click)="onSessionMe()">help you</h3>
                                 <ul>
                                     <li><a><i class="fa fa-cog"></i></a></li>
                                     <li><a><i class="fa fa-ellipsis-v"></i></a></li>
@@ -17,13 +17,19 @@
                             <!--msg-title end-->
                             <div class="messages-list">
                                 <ul>
-                                    <li *ngFor="let session of youSessions">
+                                    <li *ngFor="let session of curSessions">
                                         <div class="usr-msg-details">
                                             <div class="usr-ms-img">
-                                                <img src="http://localhost:8000/api/profile{{session.helpee_id}}/getavatar">
+                                                <img *ngIf="msg==true" src="http://localhost:8000/api/profile{{session.helpee_id}}/getavatar">
+                                                <img *ngIf="msg==false" src="http://localhost:8000/api/profile{{session.helper_id}}/getavatar">
                                             </div>
-                                            <div class="usr-mg-info">
+
+                                            <div *ngIf="msg==true" class="usr-mg-info">
                                                 <h3>{{session.helpee_name}}</h3>
+                                                <p>{{session.created_at}}</p>
+                                            </div>
+                                            <div *ngIf="msg==false" class="usr-mg-info">
+                                                <h3>{{session.helper_name}}</h3>
                                                 <p>{{session.created_at}}</p>
                                             </div>
                                             <!--usr-mg-info end-->
