@@ -6,50 +6,58 @@ import { Post } from "./models/post.model";
 
 
 @Injectable()
-export class PostService {
+export class HelpService {
   constructor(private http: Http, private authService: AuthService) {
 
   }
  
-  createPost (post : Post){
+  getSessionMe (){
     const token = this.authService.getToken();
-    return this.http.post('http://127.0.0.1:8000/api/user/helpme/create?token='+token,post)
+    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpme?token='+token,)
     .map(
         (response: Response) => {
           return response.json();
         }
       );
   }
-  getAllPost (){
+  getSessionYou (){
     const token = this.authService.getToken();
-    return this.http.get('http://127.0.0.1:8000/api/user/helpme/all?token='+token)
+    return this.http.get('http://127.0.0.1:8000/api/user/sessions/helpyou?token='+token,)
     .map(
         (response: Response) => {
           return response.json();
         }
       );
   }
-  deletePost(id : number){
+  getHeadMessage (id : number , head : number){
     const token = this.authService.getToken();
-    return this.http.post('http://127.0.0.1:8000/api/user/helpme'+id+'/delete?token='+token,'')
+    return this.http.get('http://127.0.0.1:8000/api/user/session'+id+'/head'+head+'?token='+token,)
     .map(
         (response: Response) => {
           return response.json();
         }
       );
   }
-  getPostSkill (skills : string[]){
+  postMessage (id : number , message : string){
     const token = this.authService.getToken();
     const body = JSON.stringify({
-      "skills": skills,
+      "message": message,
     });
     const headers = new Headers({'Content-Type':'application/json'});
-    return this.http.post('http://127.0.0.1:8000/api/helpme/search?token='+token,body,{headers :headers})
+    return this.http.post('http://127.0.0.1:8000/api/user/session'+id+'/postmessage?token'+token,body,{headers :headers})
     .map(
         (response: Response) => {
           return response.json();
         }
       );
   }
-  
+  createSession (id : number ){
+    const token = this.authService.getToken();
+    return this.http.post('http://127.0.0.1:8000/api/user/helpme'+id+'/help?token='+token,'')
+    .map(
+        (response: Response) => {
+          return response.json();
+        }
+      );
+  }
 }

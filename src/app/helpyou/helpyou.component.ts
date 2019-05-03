@@ -5,6 +5,8 @@ import { AuthService } from '../auth.service';
 import { PostService } from '../post.service';
 import { Post } from '../models/post.model';
 import { NgForm } from '@angular/forms';
+import { HelpService } from '../help.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-helpyou',
@@ -20,7 +22,7 @@ export class HelpyouComponent implements OnInit {
   deleteSkill : boolean;
   addSkill : boolean;
   skills  : boolean;
-  constructor(private userService:UserService,private authService : AuthService,private postService : PostService) {
+  constructor(private userService:UserService,private authService : AuthService,private postService : PostService,private helpService : HelpService,private router : Router) {
     this.token = this.authService.getToken();
     this.img='http://localhost:8000/api/user/getavatar?token='+this.token;
    }
@@ -39,9 +41,8 @@ export class HelpyouComponent implements OnInit {
   }
   getHelpYouRequest(skills : string []){
       this.postService.getPostSkill(skills).subscribe(
-          data => {this.posts=data ,console.log("Posts : ");console.log(this.posts);
-                console.log("userPosts : ");console.log(this.userPosts);
-            }
+          data => {this.posts=data},
+          error => console.log(error)
       );
       }
   onAddSkill(form : NgForm){
@@ -60,6 +61,15 @@ export class HelpyouComponent implements OnInit {
      
     );
     this.deleteSkill=false;
+  }
+  createSession (id : number){
+      console.log (id);
+      this.helpService.createSession(id).subscribe(
+          res => console.log (res),
+          error => console.log(error)
+      )
+      this.router.navigateByUrl('/messages');
+
   }
 }
 

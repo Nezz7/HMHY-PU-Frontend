@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomepageComponent } from './homepage/homepage.component';
 import { UserService } from './user.service';
 import { PostService } from './post.service';
+import { HelpService } from './help.service';
 
 
 
@@ -52,7 +53,7 @@ import { PostService } from './post.service';
     HttpModule,
     HttpClientModule
   ],
-  providers: [AuthService,UserService,PostService],
+  providers: [AuthService,UserService,PostService,HelpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

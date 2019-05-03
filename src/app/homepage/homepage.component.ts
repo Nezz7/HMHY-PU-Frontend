@@ -23,7 +23,7 @@ export class HomepageComponent implements OnInit {
     .subscribe(
         response=> console.log(response),
         error => {
-          swal('Error', 'Please make sure you have entered the right credentials!', 'error');
+          console.log(error);
           localStorage.clear();
         }
     );
